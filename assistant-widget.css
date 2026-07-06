@@ -1,0 +1,187 @@
+.aman-assistant-widget {
+  --assistant-card: rgba(255, 248, 239, 0.72);
+  --assistant-ink: var(--forest, #404923);
+  --assistant-muted: var(--muted, #756D5F);
+  --assistant-gold: var(--gold, #C7A77C);
+  --assistant-shadow: var(--shadow, 0 20px 60px rgba(64, 73, 35, 0.14));
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.aman-assistant-character {
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(255,255,255,0.8), transparent 54%),
+    linear-gradient(160deg, rgba(255,248,239,0.96), rgba(222,197,165,0.78));
+  box-shadow: var(--assistant-shadow);
+  padding: 8px;
+  transform-origin: center bottom;
+  animation: amanAssistantFloat 4.6s ease-in-out infinite;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.aman-assistant-character:hover,
+.aman-assistant-widget.bubble-open .aman-assistant-character {
+  transform: translateY(-4px) scale(1.045);
+  box-shadow: 0 24px 62px rgba(64, 73, 35, 0.18);
+}
+
+.aman-assistant-character img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(0 12px 18px rgba(64, 73, 35, 0.14));
+}
+
+.aman-assistant-bubble {
+  position: absolute;
+  inset-inline-start: 50%;
+  top: -18px;
+  width: min(260px, 78vw);
+  padding: 12px 14px;
+  border-radius: 18px 18px 6px 18px;
+  background: var(--assistant-card);
+  border: 1px solid rgba(93, 103, 56, 0.14);
+  color: var(--assistant-ink);
+  box-shadow: var(--assistant-shadow);
+  font-weight: 900;
+  line-height: 1.6;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -14px) scale(0.96);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 5;
+}
+
+.aman-assistant-bubble::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 50%;
+  bottom: -9px;
+  width: 18px;
+  height: 18px;
+  background: inherit;
+  border-inline-end: 1px solid rgba(93, 103, 56, 0.14);
+  border-bottom: 1px solid rgba(93, 103, 56, 0.14);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.aman-assistant-widget.bubble-open .aman-assistant-bubble {
+  opacity: 1;
+  transform: translate(-50%, -28px) scale(1);
+}
+
+.aman-assistant-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.aman-assistant-actions a,
+.aman-assistant-actions button {
+  min-height: 42px;
+  border: 1px solid rgba(93, 103, 56, 0.14);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.52);
+  color: var(--assistant-ink);
+  padding: 8px 14px;
+  font: inherit;
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.aman-assistant-actions a:hover,
+.aman-assistant-actions button:hover {
+  background: var(--assistant-ink);
+  color: var(--cream-soft, #FFF8EF);
+  transform: translateY(-2px);
+}
+
+.aman-assistant-widget[data-assistant-size="hero"] .aman-assistant-character {
+  width: clamp(142px, 18vw, 190px);
+  height: clamp(142px, 18vw, 190px);
+  border-radius: 44px;
+  padding: 10px;
+}
+
+.aman-assistant-widget[data-assistant-size="mini"] {
+  gap: 8px;
+}
+
+.aman-assistant-widget[data-assistant-size="mini"] .aman-assistant-character {
+  width: 72px;
+  height: 72px;
+  border-radius: 24px;
+  padding: 6px;
+}
+
+.aman-assistant-widget[data-assistant-size="mini"] .aman-assistant-actions {
+  display: none;
+}
+
+.chat-header .aman-assistant-widget {
+  display: inline-grid;
+}
+
+.chat-header .aman-assistant-bubble {
+  top: 0;
+}
+
+@keyframes amanAssistantFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (max-width: 640px) {
+  .aman-assistant-widget {
+    gap: 12px;
+  }
+
+  .aman-assistant-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .aman-assistant-actions a,
+  .aman-assistant-actions button {
+    width: 100%;
+  }
+
+  .aman-assistant-bubble {
+    width: min(250px, calc(100vw - 44px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aman-assistant-character {
+    animation: none;
+  }
+
+  .aman-assistant-character,
+  .aman-assistant-bubble,
+  .aman-assistant-actions a,
+  .aman-assistant-actions button {
+    transition: none;
+  }
+
+  .aman-assistant-character:hover,
+  .aman-assistant-widget.bubble-open .aman-assistant-character {
+    transform: none;
+  }
+}

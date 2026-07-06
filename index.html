@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assistant-widget.css" />
 </head>
 <body>
   <header class="site-header" id="top">
@@ -67,12 +68,16 @@
 
         <div class="hero-visual reveal">
           <div class="hero-guide">
-            <div class="assistant-persona hero-persona" aria-hidden="true">
-              <span class="hair"></span>
-              <span class="face"></span>
-              <span class="glasses"></span>
-              <span class="smile"></span>
-              <span class="shirt"></span>
+            <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="hero" dir="rtl">
+              <button class="aman-assistant-character" type="button" aria-expanded="false">
+                <img src="assets/aman-assistant.png" alt="رفيق أمان، مساعد ودود لمنصة أمان" />
+              </button>
+              <div class="aman-assistant-bubble" role="status" aria-live="polite">أهلًا، أنا رفيق أمان</div>
+              <div class="aman-assistant-actions" aria-label="إجراءات رفيق أمان السريعة">
+                <a href="#assistant">جرّب المرشد الذكي</a>
+                <button type="button" data-assistant-say="نقدر نساعدك تختار الخطوة المناسبة">توجيه بسيط</button>
+                <button class="open-booking" type="button" data-specialist="فريق أمان">احجز مرشدك</button>
+              </div>
             </div>
             <div class="hero-guide-text">
               <b>أهلا، أنا رفيق أمان</b>
@@ -169,8 +174,11 @@
                   </div>
                 </div>
                 <div class="mock-person-card">
-                  <div class="assistant-persona mini-persona" aria-hidden="true">
-                    <span class="hair"></span><span class="face"></span><span class="glasses"></span><span class="smile"></span><span class="shirt"></span>
+                  <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="mini" dir="rtl">
+                    <button class="aman-assistant-character" type="button" aria-expanded="false">
+                      <img src="assets/aman-assistant.png" alt="رفيق أمان" />
+                    </button>
+                    <div class="aman-assistant-bubble" role="status" aria-live="polite">ابدأ الكلام بطريقتك وبدون تسجيل</div>
                   </div>
                   <b>رفيق أمان</b>
                 </div>
@@ -302,12 +310,11 @@
         </div>
         <div class="chat-widget inline-chat reveal" data-chat="main">
           <div class="chat-header">
-            <div class="assistant-persona" aria-hidden="true">
-              <span class="hair"></span>
-              <span class="face"></span>
-              <span class="glasses"></span>
-              <span class="smile"></span>
-              <span class="status-dot"></span>
+            <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="mini" dir="rtl">
+              <button class="aman-assistant-character" type="button" aria-expanded="false">
+                <img src="assets/aman-assistant.png" alt="رفيق أمان" />
+              </button>
+              <div class="aman-assistant-bubble" role="status" aria-live="polite">نقدر نساعدك تختار الخطوة المناسبة</div>
             </div>
             <div>
               <b>مساعد أمان</b>
@@ -397,12 +404,11 @@
   <div class="floating-chat" aria-hidden="true">
     <div class="chat-widget" data-chat="floating">
       <div class="chat-header">
-        <div class="assistant-persona" aria-hidden="true">
-          <span class="hair"></span>
-          <span class="face"></span>
-          <span class="glasses"></span>
-          <span class="smile"></span>
-          <span class="status-dot"></span>
+        <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="mini" dir="rtl">
+          <button class="aman-assistant-character" type="button" aria-expanded="false">
+            <img src="assets/aman-assistant.png" alt="رفيق أمان" />
+          </button>
+          <div class="aman-assistant-bubble" role="status" aria-live="polite">أهلًا، أنا رفيق أمان</div>
         </div>
         <div>
           <b>مساعد أمان</b>
@@ -495,5 +501,6 @@
   </div>
 
   <script src="app.js"></script>
+  <script src="assistant-widget.js"></script>
 </body>
 </html>
