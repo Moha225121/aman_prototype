@@ -1,16 +1,16 @@
 :root {
-  --cream: #F7E7D6;
-  --cream-soft: #FFF8EF;
-  --gold: #C7A77C;
-  --beige: #DEC5A5;
-  --olive: #5D6738;
-  --forest: #404923;
-  --ink: #263016;
-  --muted: #756D5F;
+  --cream: #FFF3E4;
+  --cream-soft: #FFFCF6;
+  --gold: #D8BE95;
+  --beige: #EAD8BE;
+  --olive: #75814C;
+  --forest: #566033;
+  --ink: #3B4528;
+  --muted: #857B6C;
   --white: #FFFFFF;
   --danger: #9B3D34;
-  --shadow: 0 20px 60px rgba(64, 73, 35, 0.14);
-  --soft-shadow: 0 12px 30px rgba(64, 73, 35, 0.1);
+  --shadow: 0 20px 60px rgba(86, 96, 51, 0.1);
+  --soft-shadow: 0 12px 30px rgba(86, 96, 51, 0.08);
   --radius: 26px;
   --radius-sm: 18px;
   --container: min(1140px, calc(100% - 40px));
@@ -29,8 +29,8 @@ body {
   font-family: "Tajawal", system-ui, sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(199, 167, 124, 0.25), transparent 32rem),
-    linear-gradient(180deg, var(--cream) 0%, #fbefe0 46%, var(--cream) 100%);
+    radial-gradient(circle at top left, rgba(216, 190, 149, 0.18), transparent 32rem),
+    linear-gradient(180deg, var(--cream-soft) 0%, #fff2e2 46%, var(--cream) 100%);
   line-height: 1.8;
   overflow-x: hidden;
 }
@@ -76,7 +76,7 @@ img {
   top: 0;
   z-index: 50;
   padding: 14px 0;
-  background: rgba(247, 231, 214, 0.82);
+  background: rgba(255, 252, 246, 0.86);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(93, 103, 56, 0.12);
 }
@@ -662,7 +662,7 @@ p {
   border-radius: 24px;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(64, 73, 35, 0.94), rgba(93, 103, 56, 0.82)),
+    linear-gradient(135deg, rgba(86, 96, 51, 0.84), rgba(117, 129, 76, 0.72)),
     var(--forest);
 }
 
@@ -1021,7 +1021,7 @@ p {
   align-items: center;
   gap: 12px;
   padding: 18px 20px;
-  background: rgba(64, 73, 35, 0.96);
+  background: rgba(86, 96, 51, 0.94);
   color: var(--cream-soft);
 }
 
@@ -1193,7 +1193,7 @@ p {
 .cta-panel {
   text-align: center;
   background:
-    linear-gradient(135deg, rgba(64, 73, 35, 0.96), rgba(93, 103, 56, 0.92)),
+    linear-gradient(135deg, rgba(86, 96, 51, 0.9), rgba(117, 129, 76, 0.84)),
     var(--forest);
 }
 

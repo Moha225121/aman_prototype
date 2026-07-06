@@ -1,5 +1,5 @@
 .aman-assistant-widget {
-  --assistant-card: rgba(255, 248, 239, 0.72);
+  --assistant-card: rgba(255, 252, 246, 0.82);
   --assistant-ink: var(--forest, #404923);
   --assistant-muted: var(--muted, #756D5F);
   --assistant-gold: var(--gold, #C7A77C);
@@ -19,8 +19,8 @@
   border: 0;
   border-radius: 32px;
   background:
-    radial-gradient(circle at 50% 22%, rgba(255,255,255,0.8), transparent 54%),
-    linear-gradient(160deg, rgba(255,248,239,0.96), rgba(222,197,165,0.78));
+    radial-gradient(circle at 50% 22%, rgba(255,255,255,0.9), transparent 54%),
+    linear-gradient(160deg, rgba(255,252,246,0.98), rgba(234,216,190,0.7));
   box-shadow: var(--assistant-shadow);
   padding: 8px;
   transform-origin: center bottom;
