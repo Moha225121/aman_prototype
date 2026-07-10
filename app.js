@@ -96,6 +96,7 @@ const quickReplies = [
 ];
 
 const crisisWords = ["انتحار", "أقتل نفسي", "أؤذي نفسي", "إيذاء نفسي", "موت", "أنهي حياتي"];
+const counselorNames = ["محمد بليبلو", "مريم اصكيليل", "ابتهاج الزاوي"];
 
 const serviceGrid = document.querySelector("#serviceGrid");
 const menuToggle = document.querySelector(".menu-toggle");
@@ -138,9 +139,11 @@ function closeModals() {
 }
 
 function openBooking(specialist = "فريق أمان") {
-  specialistInput.value = specialist;
+  const selectedSpecialist = counselorNames.includes(specialist) ? specialist : "";
+
+  specialistInput.value = selectedSpecialist;
   bookingForm.reset();
-  specialistInput.value = specialist;
+  specialistInput.value = selectedSpecialist;
   formMessage.textContent = "";
   formMessage.className = "form-message";
   bookingForm.querySelectorAll(".invalid").forEach((field) => field.classList.remove("invalid"));
@@ -237,6 +240,10 @@ function addMessage(chat, text, type = "bot", options = {}) {
 function respondToGuest(chat, text) {
   const analysis = analyzeGuestMessage(text);
   const meta = `ترشيح أولي: ${analysis.service} | مستوى الثقة: ${analysis.confidence}`;
+  const assistantWidget = chat.querySelector("[data-assistant-widget]");
+
+  window.setAssistantCharacter?.(assistantWidget, "thinking");
+
   window.setTimeout(() => {
     addMessage(chat, analysis.response, "bot", {
       meta,
@@ -244,6 +251,7 @@ function respondToGuest(chat, text) {
       actionService: analysis.service,
       actionLabel: analysis.actionLabel
     });
+    window.setAssistantCharacter?.(assistantWidget, "calm");
   }, 320);
 }
 
@@ -252,8 +260,10 @@ function setupChat(chat) {
   const replies = chat.querySelector(".quick-replies");
   const form = chat.querySelector(".chat-form");
   const input = chat.querySelector(".chat-input");
+  const assistantWidget = chat.querySelector("[data-assistant-widget]");
   messages.innerHTML = "";
   replies.innerHTML = "";
+  window.setAssistantCharacter?.(assistantWidget, "calm");
 
   addMessage(chat, "اهلا بيك في امان ..\nتقدر تحكي معايا كضيف بدون تسجيل دخول ، نعطيك كل معلومة بذاكرة ارشادية من ابحاث ليبية ، و تذكر هذا توجيه اولي بس ، مش تشخيص المختص ..");
 
@@ -274,7 +284,12 @@ function setupChat(chat) {
     if (!text) return;
     addMessage(chat, text, "user");
     input.value = "";
+    window.setAssistantCharacter?.(assistantWidget, "thinking");
     respondToGuest(chat, text);
+  });
+
+  input.addEventListener("input", () => {
+    window.setAssistantCharacter?.(assistantWidget, input.value.trim() ? "writing" : "calm");
   });
 }
 
@@ -288,6 +303,13 @@ function validateBooking() {
   });
 
   const phone = bookingForm.elements.phone;
+  const specialist = bookingForm.elements.specialist;
+  if (!counselorNames.includes(specialist.value.trim())) {
+    specialist.classList.add("invalid");
+    formMessage.textContent = "يرجى اختيار مرشد من القائمة فقط.";
+    return false;
+  }
+
   const phoneValid = /^(\+?218|0)?9[1-9]\d{7}$/.test(phone.value.trim());
   if (phone.value.trim() && !phoneValid) {
     phone.classList.add("invalid");

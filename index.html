@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="assistant-widget.css" />
+  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="assistant-widget.css?v=4" />
 </head>
 <body>
   <header class="site-header" id="top">
@@ -67,14 +67,14 @@
 
         <div class="hero-visual reveal">
           <div class="hero-guide">
-            <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="hero" dir="rtl">
+            <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="hero" data-assistant-state="thinking" dir="rtl">
               <button class="aman-assistant-character" type="button" aria-expanded="false">
-                <img src="assets/aman-assistant.png" alt="رفيق أمان، مساعد ودود لمنصة أمان" />
+                <img src="assets/aman-assistant-thinking.png?v=4" alt="رفيق أمان، مساعد ودود لمنصة أمان" />
               </button>
               <div class="aman-assistant-bubble" role="status" aria-live="polite">أهلًا، أنا رفيق أمان</div>
               <div class="aman-assistant-actions" aria-label="إجراءات رفيق أمان السريعة">
                 <a href="#assistant">جرّب المرشد الذكي</a>
-                <button type="button" data-assistant-say="نقدر نساعدك تختار الخطوة المناسبة">توجيه بسيط</button>
+                <button type="button" data-assistant-say="نقدر نساعدك تختار الخطوة المناسبة" data-assistant-state="thinking">توجيه بسيط</button>
                 <button class="open-booking" type="button" data-specialist="فريق أمان">احجز مرشدك</button>
               </div>
             </div>
@@ -173,9 +173,9 @@
                   </div>
                 </div>
                 <div class="mock-person-card">
-                  <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="mini" dir="rtl">
+                  <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="mini" data-assistant-state="writing" dir="rtl">
                     <button class="aman-assistant-character" type="button" aria-expanded="false">
-                      <img src="assets/aman-assistant.png" alt="رفيق أمان" />
+                      <img src="assets/aman-assistant-writing.png?v=4" alt="رفيق أمان" />
                     </button>
                     <div class="aman-assistant-bubble" role="status" aria-live="polite">ابدأ الكلام بطريقتك وبدون تسجيل</div>
                   </div>
@@ -272,14 +272,14 @@
             <button class="btn card-btn open-booking" type="button" data-specialist="محمد بليبلو">احجز جلسة</button>
           </article>
           <article class="profile-card reveal">
-            <div class="avatar">م ق</div>
+            <div class="avatar">م ص</div>
             <div class="stars" aria-label="تقييم خمسة نجوم">★★★★★</div>
-            <h3>مريم القذافي</h3>
+            <h3>مريم اصكيليل</h3>
             <p>أخصائي ومرشد نفسي</p>
             <div class="tags">
               <span>أخصائي ومرشد نفسي</span>
             </div>
-            <button class="btn card-btn open-booking" type="button" data-specialist="مريم القذافي">احجز جلسة</button>
+            <button class="btn card-btn open-booking" type="button" data-specialist="مريم اصكيليل">احجز جلسة</button>
           </article>
           <article class="profile-card reveal">
             <div class="avatar">ا ز</div>
@@ -313,9 +313,9 @@
         </div>
         <div class="chat-widget inline-chat reveal" data-chat="main">
           <div class="chat-header">
-            <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="mini" dir="rtl">
+            <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="mini" data-assistant-state="calm" dir="rtl">
               <button class="aman-assistant-character" type="button" aria-expanded="false">
-                <img src="assets/aman-assistant.png" alt="رفيق أمان" />
+                <img src="assets/aman-assistant-calm.png?v=4" alt="رفيق أمان" />
               </button>
               <div class="aman-assistant-bubble" role="status" aria-live="polite">نقدر نساعدك تختار الخطوة المناسبة</div>
             </div>
@@ -404,14 +404,14 @@
   </footer>
 
   <button class="chat-fab" type="button" aria-label="فتح المحادثة">
-    <img src="assets/aman-assistant.png" alt="" aria-hidden="true" />
+    <img src="assets/aman-assistant-thinking.png?v=4" alt="" aria-hidden="true" />
   </button>
   <div class="floating-chat" aria-hidden="true">
     <div class="chat-widget" data-chat="floating">
       <div class="chat-header">
-        <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="mini" dir="rtl">
+        <div class="aman-assistant-widget" data-assistant-widget data-assistant-size="mini" data-assistant-state="calm" dir="rtl">
           <button class="aman-assistant-character" type="button" aria-expanded="false">
-            <img src="assets/aman-assistant.png" alt="رفيق أمان" />
+            <img src="assets/aman-assistant-calm.png?v=4" alt="رفيق أمان" />
           </button>
           <div class="aman-assistant-bubble" role="status" aria-live="polite">أهلًا، أنا رفيق أمان</div>
         </div>
@@ -452,7 +452,12 @@
       <form id="bookingForm" novalidate>
         <label>
           المرشد المختار
-          <input type="text" id="specialistInput" name="specialist" readonly />
+          <input type="search" id="specialistInput" name="specialist" list="specialistOptions" placeholder="ابحث باسم المرشد" autocomplete="off" required />
+          <datalist id="specialistOptions">
+            <option value="محمد بليبلو"></option>
+            <option value="مريم اصكيليل"></option>
+            <option value="ابتهاج الزاوي"></option>
+          </datalist>
         </label>
         <div class="form-row">
           <label>
@@ -505,7 +510,7 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
-  <script src="assistant-widget.js"></script>
+  <script src="assistant-widget.js?v=4"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

@@ -1269,15 +1269,15 @@ p {
 .chat-fab {
   right: 24px;
   bottom: 24px;
-  width: 62px;
-  height: 62px;
-  border-radius: 22px;
+  width: 82px;
+  height: 92px;
+  border-radius: 26px;
   background: var(--forest);
   color: var(--cream-soft);
   font-weight: 900;
   font-size: 1.25rem;
   overflow: hidden;
-  padding: 6px;
+  padding: 3px;
 }
 
 .chat-fab img {
