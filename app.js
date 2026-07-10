@@ -96,7 +96,7 @@ const quickReplies = [
 ];
 
 const crisisWords = ["انتحار", "أقتل نفسي", "أؤذي نفسي", "إيذاء نفسي", "موت", "أنهي حياتي"];
-const counselorNames = ["محمد بليبلو", "مريم اصكيليل", "ابتهاج الزاوي"];
+const counselorNames = ["محمد بليبلو", "مريم الصكلول", "ابتهاج الزاوي"];
 
 const serviceGrid = document.querySelector("#serviceGrid");
 const menuToggle = document.querySelector(".menu-toggle");
