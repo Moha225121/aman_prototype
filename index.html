@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css?v=4" />
   <link rel="stylesheet" href="assistant-widget.css?v=4" />
 </head>
-<body>
+<body class="modal-open">
   <header class="site-header" id="top">
     <nav class="navbar" aria-label="التنقل الرئيسي">
       <a class="brand" href="#home" aria-label="أمان الرئيسية">
@@ -34,6 +34,7 @@
         <a href="#home" class="nav-link active">الرئيسية</a>
         <a href="#about" class="nav-link">عن أمان</a>
         <a href="#services" class="nav-link">الخدمات</a>
+        <a href="#support-programs" class="nav-link">برامج الدعم</a>
         <a href="#interfaces" class="nav-link">الواجهات</a>
         <a href="#specialists" class="nav-link">المرشدون</a>
         <a href="#assistant" class="nav-link">المرشد الذكي</a>
@@ -139,6 +140,24 @@
           <p>اختر المجال الأقرب لاحتياجك، وسنساعدك على الوصول للمرشد المناسب.</p>
         </div>
         <div class="cards-grid service-grid" id="serviceGrid"></div>
+      </div>
+    </section>
+
+    <section class="section support-programs" id="support-programs">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <span class="eyebrow">رعاية تناسب احتياجك</span>
+          <h2>برامج دعم متخصصة</h2>
+          <p>برامج عملية ترافق الفرد والأسرة خلال المراحل والتحديات المختلفة.</p>
+        </div>
+        <div class="cards-grid program-grid">
+          <article class="mini-card program-card reveal"><span class="icon">م</span><h3>برنامج المرشد الخاص</h3><p>المدرب الشخصي</p></article>
+          <article class="mini-card program-card reveal"><span class="icon">ز</span><h3>برنامج التهيئة للزواج</h3></article>
+          <article class="mini-card program-card reveal"><span class="icon">أ</span><h3>برنامج التهيئة لاستقبال المولود الأول</h3></article>
+          <article class="mini-card program-card reveal"><span class="icon">ت</span><h3>برنامج دعم لأسر أطفال التوحد</h3></article>
+          <article class="mini-card program-card reveal"><span class="icon">د</span><h3>برنامج دعم لأسر الأطفال ذوي الإعاقة</h3></article>
+          <article class="mini-card program-card reveal"><span class="icon">س</span><h3>برنامج تعديل السلوك للمراهقين</h3></article>
+        </div>
       </div>
     </section>
 
@@ -282,6 +301,16 @@
             <button class="btn card-btn open-booking" type="button" data-specialist="مريم الصكلول">احجز جلسة</button>
           </article>
           <article class="profile-card reveal">
+            <div class="avatar">ع و</div>
+            <div class="stars" aria-label="تقييم خمسة نجوم">★★★★★</div>
+            <h3>عبير الورشفاني</h3>
+            <p>أخصائي ومرشد نفسي</p>
+            <div class="tags">
+              <span>أخصائي ومرشد نفسي</span>
+            </div>
+            <button class="btn card-btn open-booking" type="button" data-specialist="عبير الورشفاني">احجز جلسة</button>
+          </article>
+          <article class="profile-card reveal">
             <div class="avatar">ا ز</div>
             <div class="stars" aria-label="تقييم خمسة نجوم">★★★★★</div>
             <h3>ابتهاج الزاوي</h3>
@@ -290,6 +319,36 @@
               <span>أخصائي ومرشد نفسي</span>
             </div>
             <button class="btn card-btn open-booking" type="button" data-specialist="ابتهاج الزاوي">احجز جلسة</button>
+          </article>
+          <article class="profile-card reveal">
+            <div class="avatar">ا ف</div>
+            <div class="stars" aria-label="تقييم خمسة نجوم">★★★★★</div>
+            <h3>اصالة الفسي</h3>
+            <p>أخصائي ومرشد نفسي</p>
+            <div class="tags">
+              <span>أخصائي ومرشد نفسي</span>
+            </div>
+            <button class="btn card-btn open-booking" type="button" data-specialist="اصالة الفسي">احجز جلسة</button>
+          </article>
+          <article class="profile-card reveal">
+            <div class="avatar">ا ف</div>
+            <div class="stars" aria-label="تقييم خمسة نجوم">★★★★★</div>
+            <h3>استبرق الفارسي</h3>
+            <p>أخصائي ومرشد نفسي</p>
+            <div class="tags">
+              <span>أخصائي ومرشد نفسي</span>
+            </div>
+            <button class="btn card-btn open-booking" type="button" data-specialist="استبرق الفارسي">احجز جلسة</button>
+          </article>
+          <article class="profile-card reveal">
+            <div class="avatar">ح م</div>
+            <div class="stars" aria-label="تقييم خمسة نجوم">★★★★★</div>
+            <h3>حواء المهدي</h3>
+            <p>أخصائي ومرشد نفسي</p>
+            <div class="tags">
+              <span>أخصائي ومرشد نفسي</span>
+            </div>
+            <button class="btn card-btn open-booking" type="button" data-specialist="حواء المهدي">احجز جلسة</button>
           </article>
         </div>
       </div>
@@ -432,6 +491,39 @@
 
   <button class="back-to-top" type="button" aria-label="العودة للأعلى">↑</button>
 
+  <div class="modal privacy-modal open" id="privacyModal" aria-hidden="false" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card privacy-consent-card">
+      <span class="eyebrow">سياسة الخصوصية والاستخدام</span>
+      <h2 id="privacyModalTitle">مرحباً بك في منصة أمان</h2>
+      <p class="privacy-intro">يرجى قراءة البنود التالية والموافقة عليها قبل بدء استخدام المنصة.</p>
+      <form id="privacyConsentForm">
+        <label class="consent-item">
+          <input type="checkbox" name="consent" />
+          <span>أستخدم المنصة بمحض إرادتي.</span>
+        </label>
+        <label class="consent-item">
+          <input type="checkbox" name="consent" />
+          <span>أفهم أن الخدمة للدعم النفسي والإرشاد الأسري، وليست بديلاً عن العلاج الطبي.</span>
+        </label>
+        <label class="consent-item">
+          <input type="checkbox" name="consent" />
+          <span>هذه المنصة مخصصة لطالبي خدمة الإرشاد والدعم النفسي فقط، وليست لمكالمات الطوارئ والحالات الحرجة.</span>
+        </label>
+        <label class="consent-item">
+          <input type="checkbox" name="consent" />
+          <span>أوافق على مشاركة المعلومات اللازمة للاستشارة، مع التزام المنصة بسرية بياناتي وفق سياسة الخصوصية.</span>
+        </label>
+        <label class="consent-item">
+          <input type="checkbox" name="consent" />
+          <span>ألتزم باستخدام المنصة باحترام وعدم إرسال أي محتوى مخالف.</span>
+        </label>
+        <p class="consent-confirmation">بالضغط على «أوافق» أقر بموافقتي على ما سبق وأبدأ الاستشارة.</p>
+        <button class="btn primary consent-submit" type="submit" disabled>أوافق</button>
+      </form>
+    </div>
+  </div>
+
   <div class="modal" id="serviceModal" aria-hidden="true" role="dialog" aria-labelledby="serviceModalTitle">
     <div class="modal-backdrop" data-close-modal></div>
     <div class="modal-card service-modal-card">
@@ -456,7 +548,11 @@
           <datalist id="specialistOptions">
             <option value="محمد بليبلو"></option>
             <option value="مريم الصكلول"></option>
+            <option value="عبير الورشفاني"></option>
             <option value="ابتهاج الزاوي"></option>
+            <option value="اصالة الفسي"></option>
+            <option value="استبرق الفارسي"></option>
+            <option value="حواء المهدي"></option>
           </datalist>
         </label>
         <div class="form-row">
@@ -480,6 +576,10 @@
               <option>الإرشاد الزواجي</option>
               <option>الرهاب الاجتماعي</option>
               <option>الوسواس القهري</option>
+              <option>نوبات الهلع</option>
+              <option>التفكير والتحليل المفرط</option>
+              <option>مشكلات المراهقة</option>
+              <option>صعوبات التعلم</option>
             </select>
           </label>
           <label>

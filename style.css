@@ -507,6 +507,22 @@ p {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.program-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.support-programs {
+  background: rgba(93, 103, 56, 0.045);
+}
+
+.program-card {
+  min-height: 180px;
+}
+
+.program-card .icon {
+  margin-bottom: 4px;
+}
+
 .specialist-grid {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -1361,6 +1377,54 @@ p {
   pointer-events: auto;
 }
 
+.privacy-modal {
+  z-index: 200;
+}
+
+.privacy-consent-card {
+  width: min(720px, 100%);
+}
+
+.privacy-intro {
+  margin-top: 10px;
+}
+
+.consent-item {
+  grid-template-columns: 24px 1fr;
+  align-items: start;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid rgba(93, 103, 56, 0.14);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  line-height: 1.7;
+}
+
+.consent-item input {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  accent-color: var(--forest);
+}
+
+.consent-confirmation {
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: var(--forest);
+  background: rgba(93, 103, 56, 0.09);
+  font-weight: 800;
+}
+
+.consent-submit {
+  width: 100%;
+}
+
+.consent-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .modal-backdrop {
   position: absolute;
   inset: 0;
@@ -1544,6 +1608,7 @@ textarea:focus {
   }
 
   .service-grid,
+  .program-grid,
   .specialist-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1651,6 +1716,7 @@ textarea:focus {
   }
 
   .service-grid,
+  .program-grid,
   .specialist-grid,
   .feature-grid,
   .why-grid {

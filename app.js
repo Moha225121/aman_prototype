@@ -47,6 +47,34 @@ const services = [
     description: "جلسات سرية لتجاوز التحديات وتجديد المودة والاستقرار.",
     detail: "تقدم الجلسات مساحة مشتركة لفهم الاحتياجات، إدارة الخلاف، وبناء اتفاقات أكثر وضوحا بين الشريكين.",
     keywords: ["زواج", "زوج", "زوجة", "شريك", "طلاق", "غيرة", "خيانة", "علاقة", "تفاهم"]
+  },
+  {
+    icon: "ه",
+    title: "نوبات الهلع",
+    description: "دعم إرشادي لفهم نوبات الهلع والتعامل مع أعراضها بهدوء وخطوات عملية.",
+    detail: "نساعدك على فهم دائرة الهلع، وملاحظة المحفزات، وتعلم مهارات أولية لتنظيم التنفس والاستجابة الجسدية بالتعاون مع المختص.",
+    keywords: ["هلع", "نوبة", "خفقان", "اختناق", "دوخة", "خوف", "نبض"]
+  },
+  {
+    icon: "ت",
+    title: "التفكير والتحليل المفرط",
+    description: "أساليب عملية لتنظيم الأفكار المتكررة وتقليل الاستنزاف الذهني.",
+    detail: "تساعدك الخدمة على ملاحظة دوائر التفكير المفرط، والتمييز بين التفكير المفيد والاجترار، وبناء عادات ذهنية أكثر اتزانا.",
+    keywords: ["تفكير مفرط", "تحليل مفرط", "اجترار", "أفكار", "تفكير", "حيرة", "تردد"]
+  },
+  {
+    icon: "م",
+    title: "مشكلات المراهقة",
+    description: "إرشاد للمراهقين وأسرهم لفهم التغيرات النفسية والسلوكية وتحسين التواصل.",
+    detail: "نقدم مساحة آمنة لفهم تحديات المراهقة، وتنظيم الحوار داخل الأسرة، والتعامل مع السلوك والمشاعر بوعي واحترام.",
+    keywords: ["مراهق", "مراهقة", "سلوك", "تمرد", "مدرسة", "والدين", "أسرة"]
+  },
+  {
+    icon: "ص",
+    title: "صعوبات التعلم",
+    description: "دعم إرشادي لفهم تحديات التعلم وبناء خطة مساندة تناسب الطفل والأسرة.",
+    detail: "نساعد الأسرة على التعرف إلى مؤشرات صعوبات التعلم، وتنظيم الدعم المنزلي والتواصل مع الجهات التعليمية والمختصين.",
+    keywords: ["تعلم", "دراسة", "قراءة", "كتابة", "تركيز", "مدرسة", "تحصيل"]
   }
 ];
 
@@ -96,7 +124,15 @@ const quickReplies = [
 ];
 
 const crisisWords = ["انتحار", "أقتل نفسي", "أؤذي نفسي", "إيذاء نفسي", "موت", "أنهي حياتي"];
-const counselorNames = ["محمد بليبلو", "مريم الصكلول", "ابتهاج الزاوي"];
+const counselorNames = [
+  "محمد بليبلو",
+  "مريم الصكلول",
+  "عبير الورشفاني",
+  "ابتهاج الزاوي",
+  "اصالة الفسي",
+  "استبرق الفارسي",
+  "حواء المهدي"
+];
 
 const serviceGrid = document.querySelector("#serviceGrid");
 const menuToggle = document.querySelector(".menu-toggle");
@@ -112,6 +148,8 @@ const formMessage = document.querySelector("#formMessage");
 const backToTop = document.querySelector(".back-to-top");
 const chatFab = document.querySelector(".chat-fab");
 const floatingChat = document.querySelector(".floating-chat");
+const privacyModal = document.querySelector("#privacyModal");
+const privacyConsentForm = document.querySelector("#privacyConsentForm");
 
 function renderServices() {
   serviceGrid.innerHTML = services.map((service, index) => `
@@ -131,11 +169,33 @@ function openModal(modal) {
 }
 
 function closeModals() {
-  document.querySelectorAll(".modal.open").forEach((modal) => {
+  document.querySelectorAll(".modal.open:not(#privacyModal)").forEach((modal) => {
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
   });
-  document.body.classList.remove("modal-open");
+  if (!document.querySelector(".modal.open")) {
+    document.body.classList.remove("modal-open");
+  }
+}
+
+function setupPrivacyConsent() {
+  const checkboxes = [...privacyConsentForm.querySelectorAll('input[type="checkbox"]')];
+  const submitButton = privacyConsentForm.querySelector(".consent-submit");
+
+  function updateConsentState() {
+    submitButton.disabled = !checkboxes.every((checkbox) => checkbox.checked);
+  }
+
+  privacyConsentForm.addEventListener("change", updateConsentState);
+  privacyConsentForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!checkboxes.every((checkbox) => checkbox.checked)) return;
+    privacyModal.classList.remove("open");
+    privacyModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  });
+
+  updateConsentState();
 }
 
 function openBooking(specialist = "فريق أمان") {
@@ -500,6 +560,7 @@ function setupScrollEffects() {
 }
 
 renderServices();
+setupPrivacyConsent();
 setupInteractions();
 document.querySelectorAll(".chat-widget").forEach(setupChat);
 setupScrollEffects();
